@@ -1,0 +1,9 @@
+<% if @user %>
+  <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+    <%= image_tag "62253.png", :alt => "Group",width:"48", height:"48" ,background:"#e83e8c", color:"#e83e8c",class:"mr-3" %>
+    <div class="lh-100">
+      <h6 class="mb-0 text-white lh-100"><%= "#{@user.first_name} #{@user.last_name}" %></h6>
+      <small><%= "@#{@user.username}" %></small>
+    </div>
+  </div>
+<% end %>

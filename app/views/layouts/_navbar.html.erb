@@ -1,0 +1,36 @@
+<% if not current_page?(:signup) %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Groupath</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Groups</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Profile</a>
+      </li>
+    </ul>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <div class="pr-1">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </div>
+    </form>
+    <div class="px-1">
+      <%= link_to "Sign Up",
+                  :signup,
+                  class:"btn btn-outline-primary"
+      %>
+    </div>
+    <div class="pl-1">
+      <button class="btn btn-outline-primary" type="submit">Sign In</button>
+    </div>
+  </div>
+</nav>
+<% end %>

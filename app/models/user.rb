@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
 
+  def to_param
+    username
+  end
+
+
   validates :username,
             presence: true,
             uniqueness: {case_sensitive: false},
@@ -16,6 +21,7 @@ class User < ApplicationRecord
             email: true
   validates :password,
             presence: true,
-            length: {maximum: 6}
+            length: {minimum: 6}
+
 
 end

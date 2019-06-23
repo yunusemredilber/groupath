@@ -1,30 +1,8 @@
-
-
 <main role="main" class="container">
-  <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
-    <%= image_tag "62253.png", :alt => "Group",width:"48", height:"48" ,background:"#e83e8c", color:"#e83e8c",class:"mr-3" %>
-    <div class="lh-100">
-      <h6 class="mb-0 text-white lh-100"><%= "#{@user.first_name} #{@user.last_name}" %></h6>
-      <small><%= "@#{@user.username}" %></small>
-    </div>
-  </div>
 
-  <div class="nav-scroller bg-white shadow-sm">
-    <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Followers</a>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Edit Account", edit_user_path(@user),class:"nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Delete Account", @user,class: "nav-link text-danger", method: :delete %>
-      </li>
-    </ul>
-  </div>
+  <%= render 'header' %>
+
+  <%= render 'user_nav' %>
 
   <div class="my-3 p-3 bg-white rounded shadow-sm">
     <h6 class="border-bottom border-gray pb-2 mb-0">Groups</h6>
@@ -50,7 +28,7 @@
       </p>
     </div>
     <small class="d-block text-right mt-3">
-      <a href="#">All updates</a>
+      <a href="#">All Groups</a>
     </small>
   </div>
 
@@ -92,44 +70,7 @@
   </div>
 </main>
 
-<style>
-  html,
-  body {
-    overflow-x: hidden; /* Prevent scroll on narrow devices */
-  }
+<%= render 'styles' %>
 
-
-  @media (max-width: 991.98px) {
-    .offcanvas-collapse {
-      position: fixed;
-      top: 56px; /* Height of navbar */
-      bottom: 0;
-      left: 100%;
-      width: 100%;
-      padding-right: 1rem;
-      padding-left: 1rem;
-      overflow-y: auto;
-      visibility: hidden;
-      background-color: #343a40;
-      transition: visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
-      transition: transform .3s ease-in-out, visibility .3s ease-in-out;
-      transition: transform .3s ease-in-out, visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
-    }
-    .offcanvas-collapse.open {
-      visibility: visible;
-      -webkit-transform: translateX(-100%);
-      transform: translateX(-100%);
-    }
-  }
-
-
-  .text-white-50 { color: rgba(255, 255, 255, .5); }
-
-  .bg-purple { background-color: #6f42c1; }
-
-  .lh-100 { line-height: 1; }
-  .lh-125 { line-height: 1.25; }
-  .lh-150 { line-height: 1.5; }
-
-</style>
 <div>Icons made by <a href="https://www.freepik.com/?__hstc=57440181.efdfea0f403a5df447a66c6c85938a3b.1561300076510.1561300076510.1561300076510.1&__hssc=57440181.3.1561300076512&__hsfp=3490612830" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+

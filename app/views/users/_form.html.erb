@@ -1,4 +1,4 @@
-<%= form_for @user do |form| %>
+<%= form_for @user, :html => {:autocomplete => "off"} do |form| %>
   <% if @user.errors.any? %>
     <% @user.errors.full_messages do |message| %>
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -10,34 +10,37 @@
     <% end %>
   <% end %>
   <div class="form-label-group">
-    <%= form.text_field :username, class: "form-control", placeholder: "Username", required: true, autofocus: true %>
+    <%= form.text_field :username, class: "form-control", placeholder: "Username", required: true, autofocus: true, :autocomplete => :off %>
   </div>
 
   <div class="form-label-group">
-    <%= form.text_field :first_name, class: "form-control", placeholder: "First Name", required: true %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "First Name", required: true, :autocomplete => :off %>
   </div>
 
   <div class="form-label-group">
-    <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true%>
+    <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true, :autocomplete => :off%>
   </div>
 
   <div class="form-label-group">
-    <%= form.email_field :email, class: "form-control", placeholder: "email", required: true %>
+    <%= form.email_field :email, class: "form-control", placeholder: "email", required: true, :autocomplete => :off %>
+  </div>
+  <% if params[:action] == 'new' || params[:action] == 'create' %>
+  <div class="form-label-group">
+    <%= form.password_field :password, class: "form-control", placeholder: "Password", required: true, :autocomplete => :off %>
   </div>
 
   <div class="form-label-group">
-    <%= form.password_field :password, class: "form-control", placeholder: "Password", required: true %>
-  </div>
-
-  <div class="form-label-group">
-    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password", required: true %>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password", required: true, :autocomplete => :off %>
   </div>
 
   <div class="custom-control custom-checkbox mb-3">
     <input type="checkbox" class="custom-control-input" id="customCheck1">
     <label class="custom-control-label" for="customCheck1">Remember password</label>
   </div>
-  <%= form.submit "Sign up", class: "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+  <% end %>
+  <%= form.submit class: "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+  <% if params[:action] == 'new' || params[:action] == 'create' %>
   <div class="text-center">
     <a class="small" href="#">Forgot password?</a></div>
+    <% end %>
 <% end %>
