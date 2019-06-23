@@ -5,11 +5,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Groupath</a>
@@ -30,10 +34,11 @@
       </ul>
       <form class="form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
   </nav>
+
 
     <%= yield %>
   </body>

@@ -1,0 +1,43 @@
+<%= form_for @user do |form| %>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages do |message| %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= message %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="form-label-group">
+    <%= form.text_field :username, class: "form-control", placeholder: "Username", required: true, autofocus: true %>
+  </div>
+
+  <div class="form-label-group">
+    <%= form.text_field :first_name, class: "form-control", placeholder: "First Name", required: true %>
+  </div>
+
+  <div class="form-label-group">
+    <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true%>
+  </div>
+
+  <div class="form-label-group">
+    <%= form.email_field :email, class: "form-control", placeholder: "email", required: true %>
+  </div>
+
+  <div class="form-label-group">
+    <%= form.password_field :password, class: "form-control", placeholder: "Password", required: true %>
+  </div>
+
+  <div class="form-label-group">
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password", required: true %>
+  </div>
+
+  <div class="custom-control custom-checkbox mb-3">
+    <input type="checkbox" class="custom-control-input" id="customCheck1">
+    <label class="custom-control-label" for="customCheck1">Remember password</label>
+  </div>
+  <%= form.submit "Sign up", class: "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+  <div class="text-center">
+    <a class="small" href="#">Forgot password?</a></div>
+<% end %>

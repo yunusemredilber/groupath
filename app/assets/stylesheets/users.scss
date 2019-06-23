@@ -1,3 +1,62 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: 0.75rem;
+}
+
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('https://source.unsplash.com/r8AFUpRp0J0/600x1200');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-heading {
+  font-weight: 300;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+
+
+/* Fallback for Edge
+-------------------------------------------------- */
+
+@supports (-ms-ime-align: auto) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: #777;
+  }
+}

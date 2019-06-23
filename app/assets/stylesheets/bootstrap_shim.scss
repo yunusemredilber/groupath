@@ -1,2 +1,8 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+
+$theme-colors: (
+        "primary": #6f42c1,
+        "danger": #ff4136
+);
+
 @import "bootstrap";
