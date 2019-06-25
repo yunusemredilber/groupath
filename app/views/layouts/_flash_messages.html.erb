@@ -1,5 +1,6 @@
+<% message_type = {success: "success", error: "danger", notice: "info", alert: "warning"}  %>
 <% flash.each do |type, message| %>
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <div class="alert alert-<%= message_type[type.parameterize.underscore.to_sym] %> alert-dismissible fade show mb-0" role="alert">
     <strong><%= type %></strong> <%= message %>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>

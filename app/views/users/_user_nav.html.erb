@@ -10,6 +10,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Followers</a>
       </li>
+      <% if @user == current_user %>
       <li class="nav-item">
         <%= link_to "Edit Account",
                     edit_profile_path(@user),
@@ -20,7 +21,7 @@
         <button type="button" class="btn btn-link text-danger" data-toggle="modal" data-target="#exampleModal">
           Delete Account
         </button>
-
+      <% end %>
       </li>
     </ul>
   </div>

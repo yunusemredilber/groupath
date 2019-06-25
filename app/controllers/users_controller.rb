@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :select_user, only: [:show, :edit, :update, :destroy]
+  before_action :allowed?, only: [:edit, :create, :destroy]
 
   def new
     @user = User.new
@@ -9,6 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = 'Welcome!'
       redirect_to profile_path(@user)
     else
@@ -50,5 +52,12 @@ class UsersController < ApplicationController
 
   def select_user
     @user = User.find_by_username(params[:id])
+  end
+
+  def allowed?
+    user = select_user
+    unless user == current_user
+      redirect_to profile_path(user), alert: 'Nope.'
+    end
   end
 end

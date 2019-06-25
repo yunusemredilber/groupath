@@ -1,0 +1,19 @@
+<%= form_for :session, url: session_path, :html => {:autocomplete => "off"} do |form| %>
+
+  <div class="form-label-group">
+    <%= form.text_field :username, class: "form-control", placeholder: "Username", required: true, autofocus: true, :autocomplete => :off %>
+  </div>
+
+  <div class="form-label-group">
+    <%= form.password_field :password, class: "form-control", placeholder: "Password", required: true, :autocomplete => :off %>
+  </div>
+
+
+    <div class="custom-control custom-checkbox mb-3">
+      <input type="checkbox" class="custom-control-input" id="customCheck1">
+      <label class="custom-control-label" for="customCheck1">Remember password</label>
+    </div>
+  <%= form.submit 'Sign In', class: "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+    <div class="text-center">
+      <a class="small" href="#">Forgot password?</a></div>
+<% end %>
