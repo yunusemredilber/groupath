@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   post 'follow/create', to: 'follow#create', as: :follow
   delete 'follow/destroy', to: 'follow#destroy', as: :unfollow
+
+  post 'membership/create', to: 'memberships#create', as: :join
+  delete 'membership/destroy', to: 'memberships#destroy', as: :quit
+
   resource :session, only: [:new, :create, :destroy]
   get '/signin', to: 'sessions#new', as: :signin
   delete '/logout', to: 'sessions#destroy', as: :logout

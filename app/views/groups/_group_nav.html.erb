@@ -1,6 +1,24 @@
 <% if @group %>
   <div class="nav-scroller bg-white shadow-sm">
     <ul class="nav justify-content-center">
+      <% unless current_user.id == @group.admin_id %>
+        <% if current_user.groups.include? @group %>
+          <li class="nav-item">
+            <%= link_to "Quit",
+                        quit_path(:id => @group.id),
+                        method: :delete,
+                        class:"nav-link"
+            %>
+          </li>
+        <% else %>
+          <%= link_to "Join",
+                      join_path(:id => @group.id),
+                      method: :post,
+                      class:"nav-link"
+          %>
+          </li>
+        <% end %>
+      <% end %>
       <li class="nav-item">
         <%= link_to "Dashboard",
                     group_path(@group),
