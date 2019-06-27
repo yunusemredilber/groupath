@@ -3,6 +3,10 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def index
+
+  end
+
   def create
     group_params[:admin_id] = current_user.id
     @group = Group.new(group_params)

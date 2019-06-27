@@ -1,26 +1,17 @@
 <div class="my-3 p-3 bg-white rounded shadow-sm">
   <h6 class="border-bottom border-gray pb-2 mb-0">Groups</h6>
-  <div class="media text-muted pt-3 ">
-    <%= image_tag "59293.png", :alt => "Group",width:"32", height:"32" ,background:"#e83e8c", color:"#e83e8c",class:"mr-2 rounded" %>
-    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-      <strong class="d-block text-gray-dark">@groupname</strong>
-      Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-    </p>
-  </div>
-  <div class="media text-muted pt-3">
-    <%= image_tag "59293.png", :alt => "Group",width:"32", height:"32" ,background:"#e83e8c", color:"#e83e8c",class:"mr-2 rounded" %>
-    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-      <strong class="d-block text-gray-dark">@groupname</strong>
-      Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-    </p>
-  </div>
-  <div class="media text-muted pt-3">
-    <%= image_tag "59293.png", :alt => "Group",width:"32", height:"32" ,background:"#e83e8c", color:"#e83e8c",class:"mr-2 rounded" %>
-    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-      <strong class="d-block text-gray-dark">@groupname</strong>
-      Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-    </p>
-  </div>
+  <% current_user.groups.each do |group| %>
+    <div class="media text-muted pt-3 ">
+      <%= image_tag "59293.png", :alt => "Group",width:"32", height:"32" ,background:"#e83e8c", color:"#e83e8c",class:"mr-2 rounded" %>
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <%= link_to "@#{group.groupname}",
+                    group_path(group),
+                    class:"d-block text-gray-dark"
+        %>
+        <%= group.description %>
+      </p>
+    </div>
+  <% end %>
   <small class="d-block text-right mt-3">
     <a href="#">All Groups</a>
   </small>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'g', to: 'groups#index'
+  get '/', to: 'sessions#new', as: :home # Temp Controller
+
+  get 'g', to: 'groups#index', as: :groups
   get 'g/new', to: 'groups#new', as: :new_group
 
   post 'follow/create', to: 'follow#create', as: :follow
@@ -24,7 +26,7 @@ Rails.application.routes.draw do
   patch 'g/:id', to: 'groups#update'
   delete 'g/:id', to: 'groups#destroy'
 
-  resources :groups, only: [:create, :update]
+  post 'g', to: 'groups#create'
 
   get '/users/new', to: redirect('/signup')
   resources :users, except: :index
