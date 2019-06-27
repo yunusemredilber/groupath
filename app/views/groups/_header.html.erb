@@ -1,0 +1,9 @@
+<% if @group %>
+  <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm clearfix">
+    <%= image_tag "59293.png", :alt => "Group",width:"48", height:"48" ,background:"#e83e8c", color:"#e83e8c",class:"mr-3" %>
+    <div class="lh-100">
+      <h6 class="mb-0 text-white lh-100"><%= "#{@group.title}" %></h6>
+      <small><%= "@#{@group.groupname}" %></small>
+    </div>
+  </div>
+<% end %>

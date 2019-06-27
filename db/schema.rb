@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_25_160602) do
+ActiveRecord::Schema.define(version: 2019_06_27_114756) do
 
   create_table "follows", force: :cascade do |t|
     t.integer "follower_id", null: false
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2019_06_25_160602) do
     t.index ["followed_id"], name: "index_follows_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_follows_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "groupname", null: false
+    t.string "description", null: false
+    t.integer "admin_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.index ["groupname"], name: "index_groups_on_groupname", unique: true
   end
 
   create_table "users", force: :cascade do |t|
