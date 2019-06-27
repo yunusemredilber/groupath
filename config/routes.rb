@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'g', to: 'groups#index'
-  get 'g/new', to: 'groups#new'
+  get 'g/new', to: 'groups#new', as: :new_group
 
   post 'follow/create', to: 'follow#create', as: :follow
   delete 'follow/destroy', to: 'follow#destroy', as: :unfollow

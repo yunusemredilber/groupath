@@ -5,6 +5,9 @@ class User < ApplicationRecord
     username
   end
 
+  has_many :memberships
+  has_many :groups, through: :memberships
+
   has_many :followers,
            class_name: 'Follow',
            foreign_key: 'followed_id',

@@ -53,6 +53,8 @@ class UsersController < ApplicationController
     @current_users_followers
   end
 
+
+
   private
 
   def user_params
