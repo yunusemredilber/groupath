@@ -1,0 +1,33 @@
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+  <h6 class="border-bottom border-gray pb-2 mb-0">Followers</h6>
+  <% @current_users_followers.each do |follower_id| %>
+    <% usr = User.find(follower_id) %>
+    <div class="media text-muted pt-3">
+      <%= image_tag "62253.png", :alt => "User",width:"32", height:"32" ,background:"#e83e8c", color:"#e83e8c",class:"mr-2 rounded" %>
+      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <strong class="text-gray-dark"><%= "#{usr.first_name} #{usr.last_name}" %></strong>
+          <% if current_users_follows.include? usr.id %>
+            <%= link_to "Unfollow",
+                        unfollow_path(:id => usr.id),
+                        method: :delete,
+                        class:"nav-link"
+            %>
+          <% else %>
+            <%= link_to "Follow",
+                        follow_path(:id => usr.id),
+                        method: :post,
+                        class:"nav-link"
+            %>
+          <% end %>
+        </div>
+        <span class="d-block">@<%= usr.username %></span>
+      </div>
+    </div>
+  <% end %>
+
+
+  <small class="d-block text-right mt-3">
+    <a href="#">All followers</a>
+  </small>
+</div>

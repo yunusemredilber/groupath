@@ -5,6 +5,15 @@ class User < ApplicationRecord
     username
   end
 
+  has_many :followers,
+           class_name: 'Follow',
+           foreign_key: 'followed_id',
+           dependent: :destroy
+  has_many :follows,
+           class_name: 'Follow',
+           foreign_key: 'follower_id',
+           dependent: :destroy
+
 
   validates :username,
             presence: true,

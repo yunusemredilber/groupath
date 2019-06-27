@@ -1,6 +1,23 @@
 <% if @user %>
   <div class="nav-scroller bg-white shadow-sm">
     <ul class="nav justify-content-center">
+      <% unless current_user == @user %>
+        <li class="nav-item">
+          <% if current_users_follows.include? @user.id %>
+            <%= link_to "Unfollow",
+                        unfollow_path(:id => @user.id),
+                        method: :delete,
+                        class:"nav-link"
+            %>
+          <% else %>
+            <%= link_to "Follow",
+                        follow_path(:id => @user.id),
+                        method: :post,
+                        class:"nav-link"
+            %>
+          <% end %>
+        </li>
+        <% end %>
       <li class="nav-item">
         <%= link_to "Dashboard",
                     profile_path(@user),
@@ -8,7 +25,10 @@
         %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Followers</a>
+        <%= link_to "Followers",
+                    followers_path(@user),
+                    class:"nav-link"
+        %>
       </li>
       <% if @user == current_user %>
       <li class="nav-item">
