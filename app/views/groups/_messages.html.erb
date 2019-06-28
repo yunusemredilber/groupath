@@ -1,5 +1,5 @@
 <div class="my-3 p-3 bg-white rounded shadow-sm">
-  <h6 class="border-bottom border-gray pb-2 mb-0">Messages</h6>
+  <h6 class="border-bottom border-gray pb-2 mb-0">Messages <%= fa_icon "envelope-o" %></h6>
   <% @group.messages.order('updated_at DESC').each do |message| %>
     <div class="media text-muted pt-3">
       <%= image_tag "62253.png", :alt => "User",width:"32", height:"32" ,background:"#e83e8c", color:"#e83e8c",class:"mr-2 rounded" %>

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/', to: 'sessions#new', as: :home # Temp Controller
 
+  get 'my_groups', to: 'users#my_groups', as: :my_groups
+
   get 'g', to: 'groups#index', as: :groups
   get 'g/new', to: 'groups#new', as: :new_group
 

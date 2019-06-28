@@ -5,7 +5,7 @@
   <%= render 'group_nav' %>
 
   <div class="my-3 p-3 bg-white rounded shadow-sm">
-    <h6 class="border-bottom border-gray pb-2 mb-0"><%= @message.subject %></h6>
+    <h6 class="border-bottom border-gray pb-2 mb-0"><%= @message.subject %> <%= fa_icon "envelope-o" %></h6>
     <div class="media text-muted pt-3">
       <%= @message.text %>
       <br class="clearfix"/>

@@ -1,0 +1,71 @@
+<% users_groups = Group.where("admin_id = ?", current_user.id)%>
+
+<main role="main" class="container">
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Messages <%= fa_icon "envelope-o" %></h6>
+    <% users_groups.order('updated_at DESC').each do |group| %>
+      <div class="media text-muted pt-3">
+        <%= image_tag "62253.png", :alt => "User",width:"32", height:"32" ,background:"#e83e8c", color:"#e83e8c",class:"mr-2 rounded" %>
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <%= link_to "@#{group.groupname}",
+                        group_path(group),
+                        class:"text-gray-dark"
+            %>
+            <div>
+              <%= link_to "View",
+                          group_path(group),
+                          class:"text-gray-dark mr-1"
+              %>
+              <%= link_to "Edit",
+                          edit_group_path(group),
+                          class:"text-gray-dark"
+              %>
+                <button type="button" class="btn btn-link btn-sm text-danger" data-toggle="modal" data-target="#exampleModal">
+                  Delete Group
+                </button>
+            </div>
+          </div>
+          <span class="d-block"><%= group.description %></span>
+        </div>
+      </div>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Delete Group</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure ?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <%= link_to "Delete Group",
+                          group,
+                          method: :delete,
+                          data:{confrim:'Are you sure ?'},
+                          class: "btn btn-danger"
+              %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <% end %>
+    <small class="d-block text-right mt-3">
+      <a href="#">All Groups</a>
+    </small>
+  </div>
+
+
+</main>
+
+<%= render 'styles' %>

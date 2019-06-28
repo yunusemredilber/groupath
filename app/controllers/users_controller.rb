@@ -53,7 +53,8 @@ class UsersController < ApplicationController
     @current_users_followers
   end
 
-
+  def my_groups
+  end
 
   private
 
