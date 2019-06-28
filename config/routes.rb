@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :messages
   get '/', to: 'sessions#new', as: :home # Temp Controller
 
   get 'g', to: 'groups#index', as: :groups

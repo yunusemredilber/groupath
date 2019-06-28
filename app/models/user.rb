@@ -5,6 +5,8 @@ class User < ApplicationRecord
     username
   end
 
+  has_many :messages, dependent: :destroy
+
   has_many :memberships
   has_many :groups, through: :memberships
 
