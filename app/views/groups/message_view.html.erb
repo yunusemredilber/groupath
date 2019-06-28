@@ -1,0 +1,26 @@
+<main role="main" class="container">
+
+  <%= render 'header' %>
+
+  <%= render 'group_nav' %>
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0"><%= @message.subject %></h6>
+    <div class="media text-muted pt-3">
+      <%= @message.text %>
+      <br class="clearfix"/>
+      <%= link_to "@#{@message.user.username}", profile_path(@message.user), class:"badge badge-primary" %>
+    </div>
+    <% if @message.user == current_user %>
+      <small class="d-block text-right mt-3">
+        <% unless @message.created_at == @message.updated_at %>
+          <span class="badge badge-primary" data-toggle="tooltip" data-placement="top" title="<%= @message.updated_at %>">Updated</span>
+        <% end %>
+        <%= l @message.created_at %>
+        <%= link_to "Edit", edit_message_path(id: @group.groupname, message_id: @message.id), class:"mr-1" %>
+        <%= link_to "Delete", edit_message_path(id: @group.id, message_id: @message.id), class:"" %>
+      </small>
+    <% end %>
+  </div>
+</main>
+<%= render 'styles' %>

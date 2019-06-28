@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post 'membership/create', to: 'memberships#create', as: :join
   delete 'membership/destroy', to: 'memberships#destroy', as: :quit
 
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: %i[new create destroy]
   get '/signin', to: 'sessions#new', as: :signin
   delete '/logout', to: 'sessions#destroy', as: :logout
   get 'signup', to: 'users#new', as: :signup
@@ -28,7 +28,10 @@ Rails.application.routes.draw do
   delete 'g/:id', to: 'groups#destroy'
 
   get 'g/:id/message', to: 'groups#message', as: :message
-  resources :messages
+  patch 'g/:id/message', to: 'messages#update'
+  get 'g/:id/m/:message_id', to: 'groups#message_view', as: :message_view
+  get 'g/:id/m/:message_id/edit', to: 'groups#edit_message', as: :edit_message
+  resources :messages, only: %i[create update delete]
 
   post 'g', to: 'groups#create'
 

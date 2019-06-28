@@ -1,0 +1,21 @@
+<main role="main" class="container">
+
+  <%= render 'header' %>
+
+  <%= render 'group_nav' %>
+
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Edit Message</h6>
+    <%= render 'message_form' %>
+  </div>
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <div class="form-label-group">
+      <%= link_to "Go Back", message_view_path(:id => @group.groupname, message_id: @message.id)%>
+    </div>
+  </div>
+
+</main>
+
+<%= render 'styles' %>

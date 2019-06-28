@@ -60,6 +60,16 @@ class GroupsController < ApplicationController
     @message = Message.new
   end
 
+  def message_view
+    @group = Group.find_by_groupname(params[:id])
+    @message = Message.find(params[:message_id])
+  end
+
+  def edit_message
+    @group = Group.find_by_groupname(params[:id])
+    @message = Message.find(params[:message_id])
+  end
+
   private
 
   def group_params
