@@ -4,7 +4,10 @@ class GroupsController < ApplicationController
   end
 
   def index
+  end
 
+  def members
+    @group = Group.find_by_groupname(params[:id])
   end
 
   def create
@@ -50,6 +53,11 @@ class GroupsController < ApplicationController
     @group.destroy
     flash[:success] = 'Group Deleted!'
     redirect_to profile_path(current_user)
+  end
+
+  def message
+    @group = Group.find_by_groupname(params[:id])
+    @message = Message.new
   end
 
   private

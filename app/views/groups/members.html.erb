@@ -1,0 +1,44 @@
+<main role="main" class="container">
+
+  <%= render 'header' %>
+
+  <%= render 'group_nav' %>
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Members</h6>
+    <% @group.users.each do |user| %>
+      <div class="media text-muted pt-3">
+        <%= image_tag "62253.png", :alt => "User",width:"32", height:"32" ,background:"#e83e8c", color:"#e83e8c",class:"mr-2 rounded" %>
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <%= link_to "#{user.first_name} #{user.last_name}", profile_path(user), class: "text-gray-dark" %>
+            <% if current_users_follows.include? user.id %>
+              <%= link_to "Unfollow",
+                          unfollow_path(:id => user.id),
+                          method: :delete,
+                          class:"text-gray-dark"
+              %>
+            <% else %>
+              <%= link_to "Follow",
+                          follow_path(:id => user.id),
+                          method: :post,
+                          class:"text-gray-dark"
+              %>
+            <% end %>
+          </div>
+          <span class="d-block">@<%= user.username %></span>
+        </div>
+      </div>
+    <% end %>
+
+
+    <small class="d-block text-right mt-3">
+      <a href="#">All followers</a>
+    </small>
+  </div>
+
+
+
+</main>
+
+<%= render 'styles' %>

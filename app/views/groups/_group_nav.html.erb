@@ -1,6 +1,12 @@
 <% if @group %>
   <div class="nav-scroller bg-white shadow-sm">
     <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <%= link_to "New Message",
+                    message_path(@group),
+                    class:"nav-link"
+        %>
+      </li>
       <% unless current_user.id == @group.admin_id %>
         <% if current_user.groups.include? @group %>
           <li class="nav-item">

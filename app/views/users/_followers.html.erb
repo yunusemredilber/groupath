@@ -11,13 +11,13 @@
             <%= link_to "Unfollow",
                         unfollow_path(:id => usr.id),
                         method: :delete,
-                        class:"nav-link"
+                        class:"text-gray-dark"
             %>
           <% else %>
             <%= link_to "Follow",
                         follow_path(:id => usr.id),
                         method: :post,
-                        class:"nav-link"
+                        class:"text-gray-dark"
             %>
           <% end %>
         </div>

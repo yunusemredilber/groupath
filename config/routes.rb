@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :messages
+
   get '/', to: 'sessions#new', as: :home # Temp Controller
 
   get 'g', to: 'groups#index', as: :groups
@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get 'g/:id/members', to: 'groups#members', as: :members
   patch 'g/:id', to: 'groups#update'
   delete 'g/:id', to: 'groups#destroy'
+
+  get 'g/:id/message', to: 'groups#message', as: :message
+  resources :messages
 
   post 'g', to: 'groups#create'
 
