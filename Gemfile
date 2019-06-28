@@ -67,3 +67,6 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
 gem 'email_validator'
+
+# Font Awesome
+gem 'font-awesome-rails'

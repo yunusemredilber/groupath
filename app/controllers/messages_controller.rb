@@ -46,6 +46,19 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    message = Message.find(params[:message_id])
+    if signed_in? && current_user.messages.include?(message)
+      if message.destroy
+        flash[:success] = 'Message Deleted!'
+        redirect_to group_path(params[:group_id])
+      else
+        flash[:notice] = 'An error occurred.'
+        redirect_back fallback_location: '/'
+      end
+    end
+  end
+
   private
 
   def message_params

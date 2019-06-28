@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'g/:id/message', to: 'groups#message', as: :message
   patch 'g/:id/message', to: 'messages#update'
   get 'g/:id/m/:message_id', to: 'groups#message_view', as: :message_view
+  delete 'g/:id/m/:message_id', to: 'messages#destroy', as: :delete_message
   get 'g/:id/m/:message_id/edit', to: 'groups#edit_message', as: :edit_message
   resources :messages, only: %i[create update delete]
 

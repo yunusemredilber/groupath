@@ -18,7 +18,7 @@
         <% end %>
         <%= l @message.created_at %>
         <%= link_to "Edit", edit_message_path(id: @group.groupname, message_id: @message.id), class:"mr-1" %>
-        <%= link_to "Delete", edit_message_path(id: @group.id, message_id: @message.id), class:"" %>
+        <%= link_to "Delete", delete_message_path(message_id: @message.id, group_id: @group.groupname), method: :delete, class:"" %>
       </small>
     <% end %>
   </div>
