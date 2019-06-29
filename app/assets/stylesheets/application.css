@@ -14,3 +14,8 @@
  *= require_self
  *= require font-awesome
  */
+@media (max-width: 991px) {
+    .paddingTopOnLittleScreen {
+        padding-top: 8px;
+    }
+}

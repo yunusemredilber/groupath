@@ -1,5 +1,5 @@
 <div class="my-3 p-3 bg-white rounded shadow-sm">
-  <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
+  <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "user", class: "mr-1" %> Suggestions</h6>
   <% @user.follows.each do |follow| %>
     <% usr = User.find(follow.followed_id) %>
     <div class="media text-muted pt-3">

@@ -5,7 +5,7 @@ class Message < ApplicationRecord
   belongs_to :group
   validates :group, presence: true
 
-  validates :text, length: { in: 10..500 }
+  validates :text, length: { in: 10..3000 }
 
   validates :subject, inclusion: {
       in: ['General', 'Important', 'Help'],

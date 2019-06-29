@@ -5,12 +5,15 @@
 
 
   <div class="my-3 p-3 bg-white rounded shadow-sm">
-    <h6 class="border-bottom border-gray pb-2 mb-0">New Message  <%= fa_icon "envelope-o" %></h6>
+    <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "envelope-o", class: "mr-1" %> New Message</h6>
     <%= render 'message_form' %>
   </div>
 
-
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <div class="form-label-group">
+        <%= link_to "Cancel", group_path(@group)%>
+      </div>
+  </div>
 
 </main>
 
-<%= render 'styles' %>

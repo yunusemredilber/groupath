@@ -30,13 +30,13 @@
     </ul>
     <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <div class="pr-1">
+      <div class="pr-1 paddingTopOnLittleScreen">
         <button class="btn btn-outline-primary" type="submit">Search</button>
       </div>
     </form>
     <% if signed_in? %>
       <!-- Example split danger button -->
-      <div class="btn-group">
+      <div class="btn-group paddingTopOnLittleScreen">
         <%= link_to "@#{current_user.username}",
                     profile_path(current_user),
                     class:"btn btn-primary"
@@ -44,7 +44,7 @@
         <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu ">
           <%= link_to "Profile",
                       profile_path(current_user),
                       class:"dropdown-item"
@@ -61,13 +61,13 @@
         </div>
       </div>
     <% else %>
-    <div class="px-1">
+    <div class="px-1 paddingTopOnLittleScreen">
       <%= link_to "Sign Up",
                   :signup,
                   class:"btn btn-outline-primary"
       %>
     </div>
-    <div class="pl-1">
+    <div class="pl-1 paddingTopOnLittleScreen">
       <%= link_to "Sign In",
                   :signin,
                   class:"btn btn-outline-primary"
