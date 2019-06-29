@@ -10,15 +10,15 @@ class FollowController < ApplicationController
         follow = Follow.new(follower_id: current_user.id, followed_id: @followed.id)
         if follow.save
           flash[:success] = 'Followed!'
-          redirect_to profile_path(@followed)
+          redirect_back(fallback_location: profile_path(@followed))
         else
           flash[:error] = 'Something wrong!'
-          redirect_to profile_path(@followed)
+          redirect_back(fallback_location: profile_path(@followed))
         end
       end
     else
       flash[:notice] = 'You need to login and follow a valid user!'
-      redirect_to '/'
+      redirect_back(fallback_location: '/')
     end
   end
 
@@ -28,14 +28,14 @@ class FollowController < ApplicationController
       follow = Follow.find_by(follower_id: current_user.id, followed_id: @followed.id)
       if follow.destroy
         flash[:success] = 'Unfollowed!'
-        redirect_to profile_path(@followed)
+        redirect_back(fallback_location: profile_path(@followed))
       else
         flash[:error] = 'Something wrong!'
-        redirect_to profile_path(@followed)
+        redirect_back(fallback_location: profile_path(@followed))
       end
     else
       flash[:notice] = 'You need to login and follow a valid user!'
-      redirect_to '/'
+      redirect_back(fallback_location: '/')
     end
   end
 end

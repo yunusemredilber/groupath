@@ -9,7 +9,7 @@
           <%= link_to "#{usr.first_name} #{usr.last_name}", profile_path(usr), class: "text-gray-dark" %>
           <% if current_users_follows.include? follow.followed_id %>
             <%= link_to "Unfollow",
-                        unfollow_path(:id => @user.id),
+                        unfollow_path(:id => usr.id),
                         method: :delete,
                         class:"text-gray-dark"
             %>
