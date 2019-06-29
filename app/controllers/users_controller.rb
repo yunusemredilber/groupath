@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :select_user, only: [:show, :edit, :update, :destroy, :followers]
-  before_action :allowed?, only: [:edit, :create, :destroy]
+  before_action :allowed?, only: [:edit, :destroy]
   before_action :followed_users, only: [:show]
 
   def new
