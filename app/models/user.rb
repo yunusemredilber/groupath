@@ -24,7 +24,7 @@ class User < ApplicationRecord
             presence: true,
             uniqueness: {case_sensitive: false},
             length: {in: 3..12},
-            format: {with: /\A[a-zA-Z][a-zA-Z0-9_-]*\Z/}
+            format: {with: /\A\d[a-zA-Z][a-zA-Z0-9_-]*\Z/}
   validates :first_name,
             presence: true
   validates :last_name,
