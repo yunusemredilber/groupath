@@ -8,11 +8,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_users_follows
-    current_users_follows = []
-    current_user.follows.each do |follow|
-      current_users_follows.push(follow.followed_id)
+    if signed_in?
+      current_users_follows = []
+      current_user.follows.each do |follow|
+        current_users_follows.push(follow.followed_id)
+      end
+      current_users_follows
     end
-    current_users_follows
   end
 
   def signed_in?

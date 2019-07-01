@@ -1,12 +1,16 @@
 <main role="main" class="container">
 
-  <%= render 'header' %>
+  <% if signed_in? %>
 
-  <%= render 'user_nav' %>
+    <%= render 'header' %>
 
-  <%= render 'groups' %>
+    <%= render 'user_nav' %>
 
-  <%= render 'suggestions' %>
+    <%= render 'groups' %>
+
+    <%= render 'suggestions' %>
+
+  <% end %>
 
 </main>
 

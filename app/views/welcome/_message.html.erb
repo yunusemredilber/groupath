@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-between align-items-center w-100">
       <div>
         <%= link_to "@#{message.user.username}", profile_path(message.user), class: "text-gray-dark" %>
-        posted a <strong>message</strong> to
+        posted a <strong>message</strong> <%= fa_icon "envelope-o", class: "mr-1" %> to
         <%= link_to "#{message.group.title}", group_path(message.group), class: "text-gray-dark" %>
       </div>
       <div>

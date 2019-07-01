@@ -1,9 +1,9 @@
 class WelcomeController < ApplicationController
 
-  before_action :timeline, only: [:index]
-
   def index
-    unless signed_in?
+    if signed_in?
+      timeline
+    else
       redirect_to signin_path
     end
   end
@@ -43,7 +43,7 @@ class WelcomeController < ApplicationController
       @data.push(data)
     end
 
-    @data.sort { |d1, d2| d1[:created_at] <=> d2[:created_at] }
+    @data = @data.sort_by{ |data| data[:created_at] }
     @data.reverse!
   end
 end

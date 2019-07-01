@@ -1,5 +1,5 @@
 <div class="my-3 p-3 bg-white rounded shadow-sm">
-  <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "comment", class: "mr-1" %> Comments</h6>
+  <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "comment-o", class: "mr-1" %> Comments</h6>
   <% @message.comments.order('updated_at DESC').each do |comment| %>
     <div id="<%= comment.id %>" class="media text-muted pt-3">
       <%= image_tag "62253.png", :alt => "Comment",width:"32", height:"32" ,background:"#e83e8c", color:"#e83e8c",class:"mr-2 rounded" %>

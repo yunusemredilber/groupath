@@ -6,27 +6,29 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item <%= current_page?(:home) ? 'active':'' %>">
-        <%= link_to "Home",
-                    home_path,
-                    class:"nav-link"
-        %>
-      </li>
-      <li class="nav-item <%= current_page?(:groups) ? 'active':'' %>">
-        <%= link_to "Groups",
-                    groups_path,
-                    class:"nav-link"
-        %>
-      </li>
-      <% users_groups = Group.where("admin_id = ?", current_user.id)%>
-      <% unless users_groups.length == 0 %>
-      <li class="nav-item <%= current_page?(:my_groups) ? 'active':'' %>">
-        <%= link_to "My Groups",
-                    my_groups_path,
-                    class:"nav-link"
-        %>
-      </li>
+      <% if signed_in? %>
+        <li class="nav-item <%= current_page?(:home) ? 'active':'' %>">
+          <%= link_to "Home",
+                      home_path,
+                      class:"nav-link"
+          %>
+        </li>
+        <li class="nav-item <%= current_page?(:groups) ? 'active':'' %>">
+          <%= link_to "Groups",
+                      groups_path,
+                      class:"nav-link"
+          %>
+        </li>
+        <% users_groups = Group.where("admin_id = ?", current_user.id)%>
+        <% unless users_groups.length == 0 %>
+          <li class="nav-item <%= current_page?(:my_groups) ? 'active':'' %>">
+            <%= link_to "My Groups",
+                        my_groups_path,
+                        class:"nav-link"
+            %>
+          </li>
         <% end %>
+      <% end %>
     </ul>
     <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
