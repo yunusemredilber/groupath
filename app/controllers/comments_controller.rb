@@ -25,6 +25,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    comment = Comment.find(params[:id])
+    if comment && signed_in? && comment.user == current_user
+      if comment.destroy
+        flash[:success] = 'Comment deleted!'
+      else
+        flash[:error] = 'Something wrong!'
+      end
+    else
+      flash[:error] = 'I think you are doing something wrong!'
+    end
+    redirect_back fallback_location: '/'
+  end
+
   private
 
   def comment_params
