@@ -4,7 +4,11 @@
 
   <%= render 'group_nav' %>
 
-  <%= render 'messages' %>
+  <% if @group.users.include?(current_user) || @group.admin_id == current_user.id %>
+    <%= render 'messages' %>
+  <% else %>
+    <%= render 'no_permission' %>
+  <% end %>
 
 
 

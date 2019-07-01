@@ -4,23 +4,29 @@
 
   <%= render 'group_nav' %>
 
-  <div class="my-3 p-3 bg-white rounded shadow-sm">
-    <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "envelope-o", class: "mr-1" %> <%= @message.subject %></h6>
-    <div class="media text-muted pt-3">
-      <div>
-      <%= @message.text %>
-      <%= link_to "@#{@message.user.username}", profile_path(@message.user), class:"badge badge-primary" %>
+  <% if @group.users.include?(current_user) || @group.admin_id == current_user.id %>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "envelope-o", class: "mr-1" %> <%= @message.subject %></h6>
+      <div class="media text-muted pt-3">
+        <div>
+        <%= @message.text %>
+        <%= link_to "@#{@message.user.username}", profile_path(@message.user), class:"badge badge-primary" %>
+        </div>
       </div>
+      <% if @message.user == current_user %>
+        <small class="d-block text-right mt-3">
+          <% unless @message.created_at == @message.updated_at %>
+            <span class="badge badge-primary" data-toggle="tooltip" data-placement="top" title="<%= @message.updated_at %>">Updated</span>
+          <% end %>
+          <%= l @message.created_at %>
+          <%= link_to "Edit", edit_message_path(id: @group.groupname, message_id: @message.id), class:"mr-1" %>
+          <%= link_to "Delete", delete_message_path(message_id: @message.id, group_id: @group.groupname), method: :delete, class:"" %>
+        </small>
+      <% end %>
     </div>
-    <% if @message.user == current_user %>
-      <small class="d-block text-right mt-3">
-        <% unless @message.created_at == @message.updated_at %>
-          <span class="badge badge-primary" data-toggle="tooltip" data-placement="top" title="<%= @message.updated_at %>">Updated</span>
-        <% end %>
-        <%= l @message.created_at %>
-        <%= link_to "Edit", edit_message_path(id: @group.groupname, message_id: @message.id), class:"mr-1" %>
-        <%= link_to "Delete", delete_message_path(message_id: @message.id, group_id: @group.groupname), method: :delete, class:"" %>
-      </small>
-    <% end %>
-  </div>
+
+  <% else %>
+    <%= render 'no_permission' %>
+  <% end %>
 </main>
