@@ -1,0 +1,22 @@
+<div class="media text-muted pt-3">
+  <%= image_tag "62253.png", :alt => "User",width:"32", height:"32" ,background:"#e83e8c", color:"#e83e8c",class:"mr-2 rounded" %>
+  <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <div>
+        <%= link_to "@#{comment.user.username}", profile_path(comment.user), class: "text-gray-dark" %>
+        <strong>commented</strong> to a
+        <%= link_to "message", message_view_path(id: comment.message.group.groupname, message_id: comment.message.id), class: "text-gray-dark" %>
+      </div>
+      <div>
+        <%= date %>
+        <%= link_to "View",
+                    message_view_path(id: comment.message.group.groupname, message_id: comment.message.id, anchor: comment.id.to_s),
+                    class:"text-gray-dark"
+        %>
+      </div>
+    </div>
+    <div class="message_overflow">
+      <%= comment.text %>
+    </div>
+  </div>
+</div>

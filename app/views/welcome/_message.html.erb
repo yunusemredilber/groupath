@@ -1,0 +1,22 @@
+<div class="media text-muted pt-3">
+  <%= image_tag "62253.png", :alt => "User",width:"32", height:"32" ,background:"#e83e8c", color:"#e83e8c",class:"mr-2 rounded" %>
+  <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <div>
+        <%= link_to "@#{message.user.username}", profile_path(message.user), class: "text-gray-dark" %>
+        posted a <strong>message</strong> to
+        <%= link_to "#{message.group.title}", group_path(message.group), class: "text-gray-dark" %>
+      </div>
+      <div>
+        <%= date %>
+        <%= link_to "View",
+                    message_view_path(id: message.group.groupname, message_id: message.id),
+                    class:"text-gray-dark"
+        %>
+      </div>
+    </div>
+    <div class="message_overflow">
+      <%= message.text %>
+    </div>
+  </div>
+</div>
