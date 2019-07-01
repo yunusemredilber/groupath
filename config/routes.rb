@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :comments
   get '/', to: 'sessions#new', as: :home # Temp Controller
 
   get 'my_groups', to: 'users#my_groups', as: :my_groups

@@ -63,6 +63,7 @@ class GroupsController < ApplicationController
   def message_view
     @group = Group.find_by_groupname(params[:id])
     @message = Message.find(params[:message_id])
+    @comment = Comment.new
   end
 
   def edit_message

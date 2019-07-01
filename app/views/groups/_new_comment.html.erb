@@ -1,0 +1,21 @@
+<%= form_for @comment, :html => {:autocomplete => "off"} do |form| %>
+  <% if @comment.errors.any? %>
+    <% @comment.errors.full_messages do |message| %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= message %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="form-label-group">
+    <%= form.text_field :text, class: "form-control", placeholder: "Comment", required: true, autofocus: true, :autocomplete => :off %>
+  </div>
+
+  <div class="d-none">
+    <%= form.select :message, options_for_select([@message.id.to_s]), {}, { class: "form-control" } %>
+  </div>
+
+  <%= form.submit class: "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+<% end %>

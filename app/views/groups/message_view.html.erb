@@ -26,6 +26,13 @@
       <% end %>
     </div>
 
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "comment", class: "mr-1" %> Write Comment</h6>
+      <%= render 'new_comment' %>
+    </div>
+
+    <%= render 'comments' %>
+
   <% else %>
     <%= render 'no_permission' %>
   <% end %>
