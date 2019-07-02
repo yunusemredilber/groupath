@@ -7,11 +7,11 @@
         <strong>commented</strong> <%= fa_icon "comment-o", class: "mr-1" %> to a
         <%= link_to "message", message_view_path(id: comment.message.group.groupname, message_id: comment.message.id), class: "text-gray-dark" %>
       </div>
-      <div>
-        <%= date %>
+      <div class="">
+        <strong class="time-ago pull-right"><%= time_ago_in_words date %></strong>
         <%= link_to "View",
                     message_view_path(id: comment.message.group.groupname, message_id: comment.message.id, anchor: comment.id.to_s),
-                    class:"text-gray-dark"
+                    class:"text-gray-dark pull-right mr-1"
         %>
       </div>
     </div>
