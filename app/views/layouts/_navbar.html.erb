@@ -1,6 +1,9 @@
 <% unless current_page?(:signup) || current_page?(:signin) %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Groupath</a>
+  <%= link_to "Groupath",
+              home_path,
+              class:"navbar-brand"
+  %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -30,12 +33,14 @@
         <% end %>
       <% end %>
     </ul>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+    <%= form_tag(search_path, method: :get, :class => "form-inline") do %>
+      <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2" %>
       <div class="pr-1 paddingTopOnLittleScreen">
-        <button class="btn btn-outline-primary" type="submit">Search</button>
+        <%= submit_tag 'Search', name: nil, class:"btn btn-outline-primary" %>
       </div>
-    </form>
+    <% end %>
+
     <% if signed_in? %>
       <!-- Example split danger button -->
       <div class="btn-group paddingTopOnLittleScreen">
