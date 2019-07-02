@@ -21,12 +21,10 @@ class User < ApplicationRecord
            foreign_key: 'follower_id',
            dependent: :destroy
 
-
   validates :username,
             presence: true,
             uniqueness: {case_sensitive: false},
-            length: {in: 3..12},
-            format: {with: /\A\d[a-zA-Z][a-zA-Z0-9_-]*\Z/}
+            length: {in: 3..12}
   validates :first_name,
             presence: true
   validates :last_name,
