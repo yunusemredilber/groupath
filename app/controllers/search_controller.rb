@@ -36,7 +36,7 @@ class SearchController < ApplicationController
       data[:message] = message
       data[:type] = 'message'
       data[:created_at] = message.created_at
-      @data.push(data)
+      @data.push(data) unless message.user == current_user
     end
 
     comments = Comment.where('text LIKE ?', "%#{params[:search]}%")
@@ -45,7 +45,7 @@ class SearchController < ApplicationController
       data[:comment] = comment
       data[:type] = 'comment'
       data[:created_at] = comment.created_at
-      @data.push(data)
+      @data.push(data) unless comment.user == current_user
     end
 
     groups = Group.where('groupname LIKE ? OR title LIKE ? OR description LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")

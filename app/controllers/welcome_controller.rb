@@ -23,14 +23,14 @@ class WelcomeController < ApplicationController
         data[:type] = 'message'
         data[:message] = message
         data[:created_at] = message.created_at
-        @data.push(data)
+        @data.push(data) unless message.user == current_user
 
         message.comments.each do |comment|
           data = {type: '', comment: first_comment, created_at: ''}
           data[:type] = 'comment'
           data[:comment] = comment
           data[:created_at] = comment.created_at
-          @data.push(data)
+          @data.push(data) unless comment.user == current_user
         end
       end
     end

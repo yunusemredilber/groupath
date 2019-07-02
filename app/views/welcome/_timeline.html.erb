@@ -1,13 +1,11 @@
 <div class="my-3 p-3 bg-white rounded shadow-sm">
   <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "align-center", class: "mr-1" %> Timeline</h6>
   <% @data.each do |data| %>
-    <% if data[:type] == 'message' %>
-      <%= render(:partial => 'message', :locals => {:message => data[:message], :date => data[:created_at]})%>
-    <% end %>
     <% if data[:type] == 'comment' %>
       <%= render(:partial => 'comment', :locals => {:comment => data[:comment], :date => data[:created_at]})%>
-    <% end %>
-    <% if data[:type] == 'follow' %>
+    <% elsif data[:type] == 'message' %>
+      <%= render(:partial => 'message', :locals => {:message => data[:message], :date => data[:created_at]})%>
+    <% elsif data[:type] == 'follow' %>
       <%= render(:partial => 'follow', :locals => {:follow => data[:follow], :date => data[:created_at]})%>
     <% end %>
   <% end %>
