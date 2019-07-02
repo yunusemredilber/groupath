@@ -1,15 +1,36 @@
 <main role="main" class="container">
+
+  <% unless @query %>
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "search", class: "mr-1" %> Search</h6>
+
+      <%= form_tag(search_path, method: :get, :class => "form-inline mt-2") do %>
+        <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2" %>
+        <div class="pr-1 paddingTopOnLittleScreen">
+          <%= submit_tag 'Search', name: nil, class:"btn btn-outline-primary" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+
   <div class="my-3 p-3 bg-white rounded shadow-sm">
     <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "search", class: "mr-1" %> Results for " <%= @query %> "</h6>
-    <% @data.each do |data| %>
-      <% if data[:type] == 'comment' %>
-        <%= render(:partial => 'comment', :locals => {:comment => data[:comment], :date => data[:created_at]})%>
-      <% elsif data[:type] == 'message' %>
-        <%= render(:partial => 'message', :locals => {:message => data[:message], :date => data[:created_at]})%>
-      <% elsif data[:type] == 'group' %>
-        <%= render(:partial => 'group', :locals => {:group => data[:group], :date => data[:created_at]})%>
-      <% elsif data[:type] == 'user' %>
-        <%= render(:partial => 'user', :locals => {:user => data[:user], :date => data[:created_at]})%>
+    <% unless @data %>
+      <% if @query %>
+        We didn't find anything. Sorry <%= fa_icon "search-minus", class: "mr-1" %>
+      <% end %>
+    <% else %>
+      <% @data.each do |data| %>
+        <% if data[:type] == 'comment' %>
+          <%= render(:partial => 'comment', :locals => {:comment => data[:comment], :date => data[:created_at]})%>
+        <% elsif data[:type] == 'message' %>
+          <%= render(:partial => 'message', :locals => {:message => data[:message], :date => data[:created_at]})%>
+        <% elsif data[:type] == 'group' %>
+          <%= render(:partial => 'group', :locals => {:group => data[:group], :date => data[:created_at]})%>
+        <% elsif data[:type] == 'user' %>
+          <%= render(:partial => 'user', :locals => {:user => data[:user], :date => data[:created_at]})%>
+        <% end %>
       <% end %>
     <% end %>
 

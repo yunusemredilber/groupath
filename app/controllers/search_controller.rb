@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def index
-    search_params
     if params[:search]
       @query = params[:search]
       find_data
@@ -9,9 +8,7 @@ class SearchController < ApplicationController
 
   private
 
-  def search_params
-    #params[:search].permit
-  end
+
 
   def find_data
 

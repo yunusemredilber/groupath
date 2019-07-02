@@ -19,6 +19,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    unless @user
+      render 'not_found_page'
+    end
+  end
+
 
 
   def update
@@ -74,9 +80,11 @@ class UsersController < ApplicationController
   end
 
   def followed_users
-    @followed_users = []
-    @user.follows do |follow|
-      @followed_users.push(User.find(follow.follwed_id))
+    if @user
+      @followed_users = []
+      @user.follows do |follow|
+        @followed_users.push(User.find(follow.follwed_id))
+      end
     end
   end
 end

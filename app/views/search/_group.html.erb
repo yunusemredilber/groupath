@@ -10,20 +10,17 @@
         <strong class="time-ago pull-right">Created <%= time_ago_in_words date %> ago</strong>
         <% unless current_user.id == group.admin_id %>
           <% if current_user.groups.include? group %>
-            <li class="nav-item">
               <%= link_to "Quit",
                           quit_path(:id => group.id),
                           method: :delete,
                           class:"text-gray-dark pull-right mr-1"
               %>
-            </li>
           <% else %>
             <%= link_to "Join",
                         join_path(:id => group.id),
                         method: :post,
                         class:"text-gray-dark pull-right mr-1"
             %>
-            </li>
           <% end %>
         <% end %>
       </div>

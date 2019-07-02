@@ -24,6 +24,9 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_groupname(params[:id])
+    unless @group
+      render 'users/not_found_page'
+    end
   end
 
   def edit
@@ -58,17 +61,26 @@ class GroupsController < ApplicationController
   def message
     @group = Group.find_by_groupname(params[:id])
     @message = Message.new
+    unless @group
+      render 'users/not_found_page'
+    end
   end
 
   def message_view
     @group = Group.find_by_groupname(params[:id])
     @message = Message.find(params[:message_id])
     @comment = Comment.new
+    unless @group
+      render 'users/not_found_page'
+    end
   end
 
   def edit_message
     @group = Group.find_by_groupname(params[:id])
     @message = Message.find(params[:message_id])
+    unless @group
+      render 'users/not_found_page'
+    end
   end
 
   private
