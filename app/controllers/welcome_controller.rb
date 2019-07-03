@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
 
+  # Welcome page
   def index
     if signed_in?
       timeline

@@ -1,5 +1,6 @@
 class FollowController < ApplicationController
 
+  # Follow an user.
   def create
     @followed = User.find(params[:id])
     if signed_in? && @followed
@@ -22,6 +23,7 @@ class FollowController < ApplicationController
     end
   end
 
+  # Unfollow an user.
   def destroy
     @followed = User.find(params[:id])
     if signed_in? && @followed

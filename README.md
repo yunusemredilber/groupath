@@ -59,4 +59,5 @@ This method uses current_user method. (Also helper_method)
 ##### current_users_follows
 We are getting an array of ids. (Also helper_method)
 
-Yunus Emre Dilber @yunusemredilber
+Yunus Emre Dilber
+@yunusemredilber

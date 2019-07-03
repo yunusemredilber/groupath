@@ -5,10 +5,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # Get signed user
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  # Returns an array of user ids.
   def current_users_follows
     if signed_in?
       current_users_follows = []
@@ -19,6 +21,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Returns signed in.
   def signed_in?
     current_user
   end

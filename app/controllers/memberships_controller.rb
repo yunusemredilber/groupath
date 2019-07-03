@@ -1,4 +1,6 @@
 class MembershipsController < ApplicationController
+
+  # Create membership
   def create
     group = Group.find(params[:id])
     if signed_in? && group
@@ -14,6 +16,7 @@ class MembershipsController < ApplicationController
     end
   end
 
+  # Destroy a membership
   def destroy
     group = Group.find(params[:id])
     if signed_in? && group

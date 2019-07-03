@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+
+  # Search page
   def index
     if params[:search]
       @query = params[:search]

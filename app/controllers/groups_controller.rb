@@ -1,15 +1,16 @@
 class GroupsController < ApplicationController
+
+  # New group page
   def new
     @group = Group.new
   end
 
-  def index
-  end
-
+  # Members page
   def members
     @group = Group.find_by_groupname(params[:id])
   end
 
+  # Create a new group
   def create
     group_params[:admin_id] = current_user.id
     @group = Group.new(group_params)
@@ -22,6 +23,7 @@ class GroupsController < ApplicationController
     end
   end
 
+  # Show a group page
   def show
     @group = Group.find_by_groupname(params[:id])
     unless @group
@@ -29,10 +31,12 @@ class GroupsController < ApplicationController
     end
   end
 
+  # Edit a group page
   def edit
     @group = Group.find_by_groupname(params[:id])
   end
 
+  # Update a group
   def update
     @group = Group.find_by_groupname(params[:id])
     update_params = group_params
@@ -51,6 +55,7 @@ class GroupsController < ApplicationController
     end
   end
 
+  # Delete a group
   def destroy
     @group = Group.find_by_groupname(params[:id])
     @group.destroy
@@ -58,6 +63,7 @@ class GroupsController < ApplicationController
     redirect_to profile_path(current_user)
   end
 
+  # New message page
   def message
     @group = Group.find_by_groupname(params[:id])
     @message = Message.new
@@ -66,6 +72,7 @@ class GroupsController < ApplicationController
     end
   end
 
+  # Message view page
   def message_view
     @group = Group.find_by_groupname(params[:id])
     @message = Message.find(params[:message_id])
@@ -75,6 +82,7 @@ class GroupsController < ApplicationController
     end
   end
 
+  # Edit message page
   def edit_message
     @group = Group.find_by_groupname(params[:id])
     @message = Message.find(params[:message_id])

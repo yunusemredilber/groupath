@@ -1,9 +1,5 @@
-// Place all the styles related to the Welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 @media (max-width: 370px) {
-  .time-ago{
+  .time-ago{ /*Makes time ago text invisible on some of mobile devices*/
     display: none;
   }
 }

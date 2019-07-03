@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 
+  # Create a new comment
   def create
     comment = Comment.new
     comment[:text] = comment_params[:text]
@@ -25,6 +26,7 @@ class CommentsController < ApplicationController
     end
   end
 
+  # Delete a comment
   def destroy
     comment = Comment.find(params[:id])
     if comment && signed_in? && comment.user == current_user

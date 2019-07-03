@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
 
+  # Create message
   def create
     message = Message.new
     message[:subject] = message_params[:subject]
@@ -26,6 +27,7 @@ class MessagesController < ApplicationController
     end
   end
 
+  # Update a message
   def update
     @message = Message.find(params[:id])
     update_params = message_params
@@ -46,6 +48,7 @@ class MessagesController < ApplicationController
     end
   end
 
+  # Destroy a message
   def destroy
     message = Message.find(params[:message_id])
     if signed_in? && current_user.messages.include?(message)

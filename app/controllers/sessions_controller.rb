@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
-  def new
-  end
 
+  # Create session
   def create
     params.require(:session).permit!
     user = User.find_by_username(params[:session][:username])
@@ -14,6 +13,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # Delete session
   def destroy
     session[:user_id] = nil
     redirect_to signin_path, notice: 'Goodbye!'
