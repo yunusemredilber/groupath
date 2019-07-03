@@ -12,6 +12,6 @@ class Message < ApplicationRecord
 
   validates :subject, inclusion: {
       in: ['General', 'Important', 'Help'],
-      message: "%{value} is not a valid size"
+      message: "%{value} is not a valid subject"
   }
 end

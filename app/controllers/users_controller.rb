@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Welcome!'
       redirect_to profile_path(@user)
     else
-      render :new
+      redirect_to signup_path
     end
   end
 

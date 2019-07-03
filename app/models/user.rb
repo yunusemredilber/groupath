@@ -24,7 +24,10 @@ class User < ApplicationRecord
   validates :username,
             presence: true,
             uniqueness: {case_sensitive: false},
-            length: {in: 3..12}
+            length: {in: 3..12},
+            exclusion: {
+                in: ['signin','signup','search','/','my_groups']
+            }
   validates :first_name,
             presence: true
   validates :last_name,
