@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :signed_in?, :current_user, :current_users_follows
 
-  after_action :last_seen
+  # after_action :last_seen
 
   private
 
@@ -23,11 +23,11 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
-  def last_seen
-    if signed_in?
-      user = current_user
-      user.touch
-    end
-  end
+#  def last_seen
+#    if signed_in?
+#      user = current_user
+#      user.touch
+#    end
+#  end
 
 end
