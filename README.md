@@ -1,5 +1,8 @@
 # Groupath
 
+> You can view this project live on https://groupathx.herokuapp.com .
+> Please use this site only for test proposes.
+
 Groupath is a social platform for groups.
 
 * We can signup, login and logout. Our passwords encoded with bcrypt.
@@ -58,6 +61,10 @@ This method uses current_user method. (Also helper_method)
 
 ##### current_users_follows
 We are getting an array of ids. (Also helper_method)
+### Deploy
+You can check [here](https://devcenter.heroku.com/articles/getting-started-with-rails5)
+to learn how to deploy your app to heroku.
 
-Yunus Emre Dilber
-@yunusemredilber
+
+> Yunus Emre Dilber
+> @yunusemredilber
