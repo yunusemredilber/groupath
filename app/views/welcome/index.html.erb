@@ -1,3 +1,11 @@
 <main role="main" class="container">
+  <div id="notifications">
+
+  </div>
   <%= render 'timeline' %>
 </main>
+<p hidden id="user_channel"><%= current_user.channel if signed_in? %></p>
+
+<script type="text/javascript" charset="utf-8">
+    connectNotificationsChannel();
+</script>

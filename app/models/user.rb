@@ -23,8 +23,8 @@ class User < ApplicationRecord
 
   validates :username,
             presence: true,
-            uniqueness: {case_sensitive: false},
-            length: {in: 3..12},
+            uniqueness: { case_sensitive: false },
+            length: { in: 3..12 },
             exclusion: {
                 in: ['signin','signup','search','/','my_groups']
             }
@@ -34,11 +34,13 @@ class User < ApplicationRecord
             presence: true
   validates :email,
             presence: true,
-            uniqueness: {case_sensitive: false},
+            uniqueness: { case_sensitive: false },
             email: true
   validates :password,
             presence: true,
-            length: {minimum: 6}
+            length: { minimum: 6 }
+  validates :channel,
+            presence: true
 
 
 end

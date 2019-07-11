@@ -1,3 +1,4 @@
+require 'securerandom'
 class UsersController < ApplicationController
 
   before_action :select_user, only: [:show, :edit, :update, :destroy, :followers]
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
 
   # Create user
   def create
+    user_params[:channel] = SecureRandom.hex
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id

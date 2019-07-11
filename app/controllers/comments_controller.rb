@@ -10,6 +10,10 @@ class CommentsController < ApplicationController
         comment.user = current_user
         comment.message = message
         if comment.save
+          ActionCable.server.broadcast("notifications_#{message.user.channel}",
+                                       type: 'comment',
+                                       comment: comment
+          )
           flash[:success] = 'Thanks for u\'r comment.'
           redirect_to message_view_path(id: message.group.groupname, message_id:message.id)
         else
