@@ -1,14 +1,13 @@
 /* This function makes us subs for NotificationsChannel */
+/* Also handles incoming data. */
 function connectNotificationsChannel() {
     App.cable.subscriptions.create({
         channel: 'NotificationsChannel', channel_id: $("#user_channel").text()
     },
     {
         received: function(data) {
-            return $('#notifications').append(this.renderNotification(data)); /* Add data to DOM.*/
-        },
-        renderNotification: function(data) {
-            return "<span>" + data.type + "</span>";
+            $('#notifications-container').removeClass('d-none');
+            return $('#notifications').prepend(data.html); /* Add data to DOM.*/
         },
     });
 }

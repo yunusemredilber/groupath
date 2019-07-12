@@ -1,6 +1,9 @@
 <main role="main" class="container">
-  <div id="notifications">
 
+  <div id="notifications-container" class="my-3 p-3 bg-white rounded shadow-sm d-none">
+    <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "bell", class: "mr-1" %> New Things Happened !</h6>
+    <div id="notifications">
+    </div>
   </div>
   <%= render 'timeline' %>
 </main>

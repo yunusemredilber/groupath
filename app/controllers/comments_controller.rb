@@ -11,8 +11,7 @@ class CommentsController < ApplicationController
         comment.message = message
         if comment.save
           ActionCable.server.broadcast("notifications_#{message.user.channel}",
-                                       type: 'comment',
-                                       comment: comment
+                                       html: html(comment)
           )
           flash[:success] = 'Thanks for u\'r comment.'
           redirect_to message_view_path(id: message.group.groupname, message_id:message.id)
@@ -49,6 +48,10 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit!
+  end
+
+  def html(comment)
+    ApplicationController.render(partial: 'welcome/comment', locals: { comment: comment, date: comment.created_at })
   end
 
 end

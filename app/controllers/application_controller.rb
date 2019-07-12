@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       current_user.follows.each do |follow|
         current_users_follows.push(follow.followed_id)
       end
-      current_users_follows
+      current_users_follows || []
     end
   end
 

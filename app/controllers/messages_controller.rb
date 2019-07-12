@@ -11,6 +11,11 @@ class MessagesController < ApplicationController
         message.group = group
         message.user = current_user
         if message.save
+          group.users.each do |user|
+            ActionCable.server.broadcast("notifications_#{user.channel}",
+                                         html: html(message)
+            )
+          end
           flash[:success] = 'Message created successfully!'
           redirect_to group_path(group)
         else
@@ -66,6 +71,10 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit!
+  end
+
+  def html(message)
+    ApplicationController.render(partial: 'welcome/message', locals: { message: message, date: message.created_at })
   end
 
 end

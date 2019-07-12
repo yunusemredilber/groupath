@@ -10,6 +10,9 @@ class FollowController < ApplicationController
       else
         follow = Follow.new(follower_id: current_user.id, followed_id: @followed.id)
         if follow.save
+          ActionCable.server.broadcast("notifications_#{@followed.channel}",
+                                       html: html(follow)
+          )
           flash[:success] = 'Followed!'
           redirect_back(fallback_location: profile_path(@followed))
         else
@@ -39,5 +42,11 @@ class FollowController < ApplicationController
       flash[:notice] = 'You need to login and follow a valid user!'
       redirect_back(fallback_location: '/')
     end
+  end
+
+  private
+
+  def html(follow)
+    ApplicationController.render(partial: 'welcome/follow', locals: { follow: follow, date: follow.created_at })
   end
 end

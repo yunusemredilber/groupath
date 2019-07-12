@@ -9,18 +9,20 @@
       </div>
       <div>
         <strong class="time-ago pull-right"><%= time_ago_in_words date %></strong>
-        <% if current_users_follows.include? user.id %>
-          <%= link_to "Unfollow",
-                      unfollow_path(:id => user.id),
-                      method: :delete,
-                      class:"text-gray-dark pull-right mr-1"
-          %>
-        <% else %>
-          <%= link_to "Follow",
-                      follow_path(:id => user.id),
-                      method: :post,
-                      class:"text-gray-dark pull-right mr-1"
-          %>
+        <% if current_users_follows %>
+          <% if current_users_follows.include? user.id %>
+            <%= link_to "Unfollow",
+                        unfollow_path(:id => user.id),
+                        method: :delete,
+                        class:"text-gray-dark pull-right mr-1"
+            %>
+          <% else %>
+            <%= link_to "Follow",
+                        follow_path(:id => user.id),
+                        method: :post,
+                        class:"text-gray-dark pull-right mr-1"
+            %>
+          <% end %>
         <% end %>
       </div>
     </div>
