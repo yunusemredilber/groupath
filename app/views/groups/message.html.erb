@@ -3,7 +3,7 @@
   <%= render 'header' %>
   <%= render 'group_nav' %>
 
-  <% if @group.users.include?(current_user) || @group.admin_id == current_user.id %>
+  <% if @group.memberships.where(active:true).pluck(:user_id).include?(current_user.id)  || @group.admin_id == current_user.id %>
     <div class="my-3 p-3 bg-white rounded shadow-sm">
       <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "envelope-o", class: "mr-1" %> New Message</h6>
       <%= render 'message_form' %>

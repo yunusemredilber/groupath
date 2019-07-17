@@ -13,6 +13,8 @@ Groupath is a social platform for groups.
 * We can create a comment to a message.
 * We can see everything related to us on our dashboard.
 
+**Db diagram is [here](https://dbdiagram.io/d/5d2ed4a3ced98361d6dcbc34).**
+
 > Ruby version: 2.5.1 |
 > Rails version: 5.2.3
 
@@ -29,15 +31,14 @@ Groupath is a social platform for groups.
 1. `rails s` Start the server :smile:
 
 ### Screenshots
-Signin:
 ![Signin](screenshots/signin.png)
-Homepage:
+
 ![Homepage](screenshots/homepage.png)
-Profile:
+
 ![Profile](screenshots/profile.png)
-Group Dashboard:
+
 ![Group](screenshots/group_dashboard.png)
-Message:
+
 ![Message](screenshots/message.png)
 
 ### Used

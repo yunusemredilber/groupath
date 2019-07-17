@@ -1,13 +1,24 @@
-<div class="my-3 p-3 bg-white rounded shadow-sm">
-  <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "eye-slash", class: "mr-1" %> No Permission</h6>
-  <div class="media text-muted pt-3">
-    <div>
-      You can join now to <strong>access this group</strong>.
+<% if @group.memberships.where(active:false).pluck(:user_id).include?(current_user.id) %>
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "eye-slash", class: "mr-1" %> No Permission</h6>
+    <div class="media text-muted pt-3">
+      <div>
+        We are still waiting for <strong>admin permission</strong> to give you access.
+      </div>
     </div>
   </div>
-  <%= link_to "Join",
-              join_path(:id => @group.id),
-              method: :post,
-              class:""
-  %>
-</div>
+<% else %>
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0"><%= fa_icon "eye-slash", class: "mr-1" %> No Permission</h6>
+    <div class="media text-muted pt-3">
+      <div>
+        You can join now to <strong>access this group</strong>.
+      </div>
+    </div>
+    <%= link_to "Join",
+                join_path(:id => @group.id),
+                method: :post,
+                class:""
+    %>
+  </div>
+<% end %>
