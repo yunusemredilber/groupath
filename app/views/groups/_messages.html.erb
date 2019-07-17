@@ -12,6 +12,7 @@
             %>
         </div>
         <div class="message_overflow">
+          <%= link_to "@#{message.user.username}", profile_path(message.user), class:"badge badge-primary" %>:
           <%= message.text %>
         </div>
       </div>
