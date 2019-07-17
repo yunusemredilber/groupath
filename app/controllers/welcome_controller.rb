@@ -16,6 +16,7 @@ class WelcomeController < ApplicationController
     first_message = Message.first
     first_comment = Comment.first
     first_follow = Follow.first
+    first_membership = Membership.first
 
     @data = []
     current_user.groups.each do |group|
@@ -41,6 +42,14 @@ class WelcomeController < ApplicationController
       data[:type] = 'follow'
       data[:follow] = follow
       data[:created_at] = follow.created_at
+      @data.push(data)
+    end
+
+    Membership.where('user_id  = ? AND active = ?', current_user.id, true).each do |membership|
+      data = {type: 'membership', membership: first_membership, created_at: ''}
+      data[:type] = 'membership'
+      data[:membership] = membership
+      data[:created_at] = membership.updated_at
       @data.push(data)
     end
 

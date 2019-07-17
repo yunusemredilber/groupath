@@ -8,6 +8,8 @@
         <%= render(:partial => 'message', :locals => {:message => data[:message], :date => data[:created_at]})%>
       <% elsif data[:type] == 'follow' %>
         <%= render(:partial => 'follow', :locals => {:follow => data[:follow], :date => data[:created_at]})%>
+      <% elsif data[:type] == 'membership' %>
+        <%= render(:partial => 'request_approve', :locals => {:membership => data[:membership], :date => data[:created_at]})%>
       <% end %>
     <% end %>
   <% end %>
