@@ -9,7 +9,6 @@ class MembershipsController < ApplicationController
         flash[:success] = 'Joined!'
         redirect_to group_path(group)
       else
-        puts membership.errors.inspect
         flash[:error] = 'An error occurred.'
         redirect_back(fallback_location: '/')
       end

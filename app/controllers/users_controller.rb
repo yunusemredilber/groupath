@@ -65,6 +65,11 @@ class UsersController < ApplicationController
     @current_users_followers
   end
 
+  # Admin panel
+  def admin
+    @memberships = Membership.joins(:group).where(groups: { admin_id: current_user.id },active: false).order('updated_at DESC')
+  end
+
   private
 
   def user_params
