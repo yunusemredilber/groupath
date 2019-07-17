@@ -32,4 +32,16 @@ class MembershipsController < ApplicationController
       end
     end
   end
+
+  # Give an user join permission
+  def permit
+    user = User.find(params[:user_id])
+    group = Group.find(params[:id])
+    membership = Membership.find_by(user: user, group: group)
+    if membership
+      membership.update_column(:active, true)
+      membership.touch # For showing on dashboard.
+    end
+    redirect_back fallback_location: '/'
+  end
 end

@@ -39,6 +39,12 @@
       </li>
       <% if current_user.id == @group.admin_id %>
         <li class="nav-item">
+          <%= link_to "Join Requests",
+                      requests_path(@group),
+                      class:"nav-link"
+          %>
+        </li>
+        <li class="nav-item">
           <%= link_to "Edit Group",
                       edit_group_path(@group),
                       class:"nav-link"

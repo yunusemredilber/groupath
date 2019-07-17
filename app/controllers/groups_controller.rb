@@ -91,6 +91,11 @@ class GroupsController < ApplicationController
     end
   end
 
+  # Join Requests
+  def requests
+    @group = Group.find_by_groupname(params[:id])
+  end
+
   private
 
   def group_params

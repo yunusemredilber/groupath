@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'g/:id', to: 'groups#show', as: :group
   get 'g/:id/edit', to: 'groups#edit', as: :edit_group
   get 'g/:id/members', to: 'groups#members', as: :members
+  get 'g/:id/requests', to: 'groups#requests', as: :requests
+  post 'g/:id/permit/:user_id', to: 'memberships#permit', as: :permit
   patch 'g/:id', to: 'groups#update'
   delete 'g/:id', to: 'groups#destroy'
   post 'g', to: 'groups#create'
