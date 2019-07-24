@@ -12,8 +12,8 @@ class GroupsController < ApplicationController
 
   # Create a new group
   def create
-    group_params[:admin_id] = current_user.id
     @group = Group.new(group_params)
+    @group.admin_id = current_user.id
     if @group.save
       flash[:notice] = 'Let\'s invite some users!'
       redirect_to group_path(@group)
@@ -99,6 +99,6 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit!
+    params.require(:group).permit(:groupname, :title, :description)
   end
 end

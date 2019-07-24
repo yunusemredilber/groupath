@@ -70,7 +70,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit!
+    params.require(:message).permit(:subject, :text, :group)
   end
 
   def html(message)

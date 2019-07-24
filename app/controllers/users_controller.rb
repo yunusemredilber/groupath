@@ -52,6 +52,7 @@ class UsersController < ApplicationController
 
   # Delete a user
   def destroy
+    session[:user_id] = nil
     @user.destroy
     redirect_to '/'
   end
@@ -73,6 +74,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
+    # FIXME Implement bottom code.
+    # params.require(:user).permit(:username, :first_name, :last_name, :email, :password, :password_confirmation)
     params.require(:user).permit!
   end
 
