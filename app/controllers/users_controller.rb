@@ -37,16 +37,26 @@ class UsersController < ApplicationController
       flash[:notice] = 'How dare you!'
       update_params.delete([:password,:password_confirmation])
     end
-    if @user.update_columns(username: update_params[:username],
-                    first_name: update_params[:first_name],
-                    last_name: update_params[:last_name],
-                    email: update_params[:email]
-    )
-      flash[:notice] = 'Profile Updated!'
-      redirect_to profile_path(@user)
+    if update_params.has_key?(:avatar)
+      if @user.avatar.attach(user_params[:avatar])
+        flash[:notice] = 'Avatar Updated!'
+        redirect_to profile_path(@user)
+      else
+        flash[:notice] = @user.inspect
+        render 'users/edit'
+      end
     else
-      flash[:notice] = @user.errors.full_messages
-      render :'users/edit'
+      if @user.update_columns(username: update_params[:username],
+                              first_name: update_params[:first_name],
+                              last_name: update_params[:last_name],
+                              email: update_params[:email]
+      )
+        flash[:notice] = 'Profile Updated!'
+        redirect_to profile_path(@user)
+      else
+        flash[:notice] = @user.errors.full_messages
+        render 'users/edit'
+      end
     end
   end
 

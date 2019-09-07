@@ -73,3 +73,6 @@ gem 'font-awesome-rails'
 
 # Postgresql
 gem 'pg'
+
+# Amazon S3
+gem "aws-sdk-s3", require: false
