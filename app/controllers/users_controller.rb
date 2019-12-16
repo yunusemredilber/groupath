@@ -1,8 +1,8 @@
 require 'securerandom'
 class UsersController < ApplicationController
 
-  before_action :select_user, only: [:show, :edit, :update, :destroy, :followers]
-  before_action :allowed?, only: [:edit, :destroy]
+  before_action :select_user, only: [:show, :edit, :update, :destroy, :followers, :admin]
+  before_action :allowed?, only: [:edit, :destroy, :update, :admin]
   before_action :followed_users, only: [:show]
 
   # New user (signup) page
@@ -95,7 +95,7 @@ class UsersController < ApplicationController
 
   def allowed?
     user = select_user
-    unless user == current_user
+    unless signed_in? && user == current_user
       redirect_to profile_path(user), alert: 'Nope.'
     end
   end

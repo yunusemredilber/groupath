@@ -33,11 +33,13 @@ class GroupsController < ApplicationController
 
   # Edit a group page
   def edit
+    make_sure_user_has_permission!
     @group = Group.find_by_groupname(params[:id])
   end
 
   # Update a group
   def update
+    make_sure_user_has_permission!
     @group = Group.find_by_groupname(params[:id])
     update_params = group_params
     if update_params.has_key?(:admin_id)
@@ -59,6 +61,7 @@ class GroupsController < ApplicationController
 
   # Delete a group
   def destroy
+    make_sure_user_has_permission!
     @group = Group.find_by_groupname(params[:id])
     @group.destroy
     flash[:success] = 'Group Deleted!'
@@ -87,7 +90,6 @@ class GroupsController < ApplicationController
   # Edit message page
   def edit_message
     @group = Group.find_by_groupname(params[:id])
-    @message = Message.find(params[:message_id])
     unless @group
       render 'users/not_found_page'
     end
@@ -95,12 +97,20 @@ class GroupsController < ApplicationController
 
   # Join Requests
   def requests
+    make_sure_user_has_permission!
     @group = Group.find_by_groupname(params[:id])
   end
 
   private
 
-  def group_params
-    params.require(:group).permit(:groupname, :title, :description, :avatar)
-  end
+    def group_params
+      params.require(:group).permit(:groupname, :title, :description, :avatar)
+    end
+
+    def make_sure_user_has_permission!
+      group = Group.find_by_groupname(params[:id])
+      unless signed_in? && group.admin_id == current_user.id
+        redirect_back fallback_location: home_path
+      end
+    end
 end
