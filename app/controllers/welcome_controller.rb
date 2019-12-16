@@ -19,7 +19,9 @@ class WelcomeController < ApplicationController
     first_membership = Membership.first
 
     @data = []
-    current_user.groups.each do |group|
+    memberships = Membership.where(user: current_user, active: true)
+    memberships.each do |membership|
+      group = membership.group
       group.messages.each do |message|
         data = {type: '', message: first_message, created_at: ''}
         data[:type] = 'message'
