@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new', as: :signup
 
   # Groups
-  get '/admin', to: 'users#admin', as: :admin
+  get 'admin', to: 'users#admin', as: :admin
   get 'my_groups', to: 'users#my_groups', as: :my_groups
   get 'g', to: 'groups#index', as: :groups
   get 'g/new', to: 'groups#new', as: :new_group
