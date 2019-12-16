@@ -44,10 +44,12 @@ class GroupsController < ApplicationController
       flash[:notice] = 'How dare you!'
       update_params.delete(:admin_id)
     end
-    if @group.update_columns(groupname: update_params[:groupname],
+    if group_params[:avatar] && @group.avatar.attach(group_params[:avatar])
+      flash[:notice] = 'Avatar Updated!'
+      redirect_to group_path(@group)
+    elsif @group.update_columns(groupname: update_params[:groupname],
                             title: update_params[:title],
-                            description: update_params[:description]
-                            )
+                            description: update_params[:description])
       flash[:success] = 'Group Updated!'
       redirect_to group_path(@group)
     else
@@ -99,6 +101,6 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:groupname, :title, :description)
+    params.require(:group).permit(:groupname, :title, :description, :avatar)
   end
 end

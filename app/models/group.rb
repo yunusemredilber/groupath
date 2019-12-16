@@ -1,5 +1,7 @@
 class Group < ApplicationRecord
 
+  has_one_attached :avatar
+
   has_many :messages, dependent: :destroy
 
   has_many :memberships, dependent: :destroy
