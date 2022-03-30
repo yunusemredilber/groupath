@@ -128,7 +128,9 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.2)
-    mimemagic (0.3.3)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
@@ -139,7 +141,8 @@ GEM
     pg (1.1.4)
     popper_js (1.14.5)
     public_suffix (3.1.0)
-    puma (3.12.6)
+    puma (4.3.12)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -248,7 +251,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   pg
-  puma (~> 3.12)
+  puma (~> 4.3)
   rails (~> 5.2.3)
   redis (~> 4.0)
   sass-rails (~> 5.0)
